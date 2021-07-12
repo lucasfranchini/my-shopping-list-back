@@ -23,5 +23,16 @@ app.post('/list', async (req,res)=>{
         res.sendStatus(500)
     }
 })
+app.get('/list', async (req,res)=>{
+    try{
+        const result = await connection.query(`SELECT * FROM list`)
+        res.send(result.rows)
+
+    }
+    catch (e){
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
 
 export default app;
